@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%h1
+    = @project.title
+.due_date
+    Due Date:
+    = @project.due_date
+.project_manager
+    Project Manager:
+    = @project.project_manager.name
+.description
+    Description:
+    = @project.description
+.tasks
+    Tasks:
+.actions
+    Actions:
+    = link_to 'Add Task', new_task_path
+
+= link_to 'Edit', edit_project_path(@project)
+\|
+= link_to 'Back', projects_path

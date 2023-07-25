@@ -1,0 +1,35 @@
+%p#notice= notice
+
+%h1
+    = @task.title
+.description
+    Description:
+    = @task.description
+.work_focus
+    Work Focus:
+    = @task.work_focus
+.due_date
+    Due Date:
+    = @task.due_date
+.status
+    Status:
+    = @task.task_status.name
+.project_manager
+    Project Manager:
+    = link_to @task.project_manager.name, project_manager_path(@task.project_manager_id)
+.employee
+    Assigned Employee:
+    = link_to @task.employee.name, employee_path(@task.employee_id)
+.project
+    Project:
+    = link_to @task.project.title, project_path(@task.project_id)
+
+.sub_tasks
+    = render partial: 'sub_tasks/sub_tasks_list', locals: {sub_tasks: @task.sub_tasks}
+
+
+
+
+= link_to 'Edit', edit_task_path(@task)
+\|
+= link_to 'Back', tasks_path

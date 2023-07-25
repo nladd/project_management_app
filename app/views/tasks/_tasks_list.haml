@@ -1,0 +1,37 @@
+%h1= "#{@project&.title} Tasks"
+
+= link_to 'New Task', new_task_path
+%br
+%br
+
+%table
+  %thead
+    %tr
+      %th Status
+      %th Title
+      %th Assigned Employee
+      %th Assigned Project Manager
+      %th Due Date
+      %th Actions
+
+  %tbody
+    - tasks.each do |task|
+      %tr
+        %td= task.task_status.name
+        %td= task.title
+        %td= link_to task.employee.name, employee_path(task.employee_id)
+        %td= link_to task.project_manager.name, project_manager_path(task.project_manager_id)
+        %td= task.due_date
+
+        %td
+          = link_to 'Sub Tasks', sub_tasks_path(task_id: task.id)
+          &nbsp;
+          = link_to 'Show', task
+          &nbsp;
+          = link_to 'Edit', edit_task_path(task)
+          &nbsp;
+          = link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Task', new_task_path

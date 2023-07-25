@@ -1,0 +1,25 @@
+= form_for @employee do |f|
+  - if @employee.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@employee.errors.count, "error")} prohibited this employee from being saved:"
+      %ul
+        - @employee.errors.full_messages.each do |message|
+          %li= message
+
+  .name
+    = f.text_field :name, placeholder: 'Name', size: 80
+  .email
+    = f.text_field :email, placeholder: 'Email', size: 80
+  .password
+    = f.text_field :password, placeholder: 'Password', size: 80
+  .title
+    = f.text_field :title, placeholder: 'Title', size: 80
+  .work_focus
+    = f.text_field :work_focus, placeholder: 'Work focus', size: 80
+  .project_manager
+    = f.select :project_manager_id, ProjectManager.all.collect { |pm| [ pm.name, pm.id ] }, prompt: 'Select a project manager' 
+
+
+
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Task Status one
+  description: Task status one
+
+not_started:
+  name: Not started
+  description: Not started
+
+working:
+  name: Working
+  description: working
+
+needs_review:
+  name: Needs review
+  description: Need review
+
+done:
+  name: Done
+  description: Done
+
+late:
+  name: Late
+  description: Late

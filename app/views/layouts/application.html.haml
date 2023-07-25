@@ -1,0 +1,22 @@
+%head
+    %title Project Manager App
+
+    = stylesheet_link_tag "application"
+
+%body
+    %table
+        %tr
+            - if @user.present?
+                %td 
+                    Logged in as
+                    %strong= "#{@user.class.name} #{@user.name}"
+            %td= link_to 'Projects', projects_path
+            %td= link_to 'Tasks', tasks_path
+            %td= link_to 'Employees', employees_path
+            %td= link_to 'Project Managers', project_managers_path
+            %td= link_to 'Logout', logout_path
+
+    %div{style: 'color: red'}
+        = flash[:error]
+
+    = yield

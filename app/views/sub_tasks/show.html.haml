@@ -1,0 +1,26 @@
+%p#notice= notice
+
+%h1
+    = @sub_task.title
+.description
+    Description:
+    = @sub_task.description
+.work_focus
+    Work Focus:
+    = @sub_task.work_focus
+.due_date
+    Due Date:
+    = @sub_task.due_date
+.status
+    Status:
+    = @sub_task.task_status.name
+.employee
+    Assigned Employee:
+    = link_to @sub_task.employee.name, employee_path(@sub_task.employee_id)
+.project
+    Project:
+    = link_to @sub_task.task.project.title, project_path(@sub_task.task.project_id)
+
+= link_to 'Edit', edit_sub_task_path(@sub_task)
+\|
+= link_to 'Back', sub_tasks_path

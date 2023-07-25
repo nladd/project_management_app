@@ -1,0 +1,30 @@
+%h1 Listing employees
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Title
+      %th Work focus
+      %th Actions
+
+  %tbody
+    - @employees.each do |employee|
+      %tr
+        %td= employee.name
+        %td= employee.email
+        %td= employee.title
+        %td= employee.work_focus
+        %td
+          = link_to 'Employee Tasks', tasks_path(user_id: employee.id)
+          &nbsp;
+          = link_to 'Show', employee
+          &nbsp;
+          = link_to 'Edit', edit_employee_path(employee)
+          &nbsp;
+          = link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Employee', new_employee_path

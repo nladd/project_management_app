@@ -1,0 +1,27 @@
+= form_for @sub_task do |f|
+  - if @sub_task.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@sub_task.errors.count, "error")} prohibited this sub_task from being saved:"
+      %ul
+        - @sub_task.errors.full_messages.each do |message|
+          %li= message
+
+  .title
+    = f.text_field :title, placeholder: 'Title', size: 80
+  .description
+    = f.text_area :description, placeholder: 'Description', rows: 5, cols: 80
+  .work_focus
+    = f.text_field :work_focus, placeholder: 'Work focus', size: 80
+  .task_status
+    = f.select :task_status_id, TaskStatus.all.collect { |ts| [ts.name, ts.id] }, prompt: 'Select a task status'
+  .due_date
+    = f.label :due_date
+    %br
+    = f.date_field :due_date
+  .project
+    = f.select :task_id, Task.all.collect { |t| [ t.title, t.id ] }, prompt: 'Select a parent task' 
+  .employee
+    = f.select :employee_id, Employee.all.collect { |e| [ e.name, e.id ] }, prompt: 'Select an employee' 
+
+  .actions
+    = f.submit 'Save'

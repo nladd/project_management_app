@@ -1,0 +1,17 @@
+= form_for @project_manager do |f|
+  - if @project_manager.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@project_manager.errors.count, "error")} prohibited this project_manager from being saved:"
+      %ul
+        - @project_manager.errors.full_messages.each do |message|
+          %li= message
+
+  .name
+    = f.text_field :name, placeholder: 'Name', size: 80
+  .email
+    = f.text_field :email, placeholder: 'Email', size: 80
+  .password
+    = f.text_field :password, placeholder: 'Password', size: 80
+
+  .actions
+    = f.submit 'Save'

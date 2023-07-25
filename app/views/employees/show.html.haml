@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%h1 Employee
+.name
+    Name:
+    = @employee.name
+.title
+    Title:
+    = @employee.title
+.email
+    Email:
+    = @employee.email
+.work_focus
+    Work focus:
+    = @employee.work_focus
+.project_manager
+    Project Manager
+    = link_to @employee.project_manager.name, project_manager_path(@employee.project_manager_id)
+
+= render partial: 'tasks/tasks_list', locals: {tasks: @employee.tasks}
+= render partial: 'sub_tasks/sub_tasks_list', locals: {sub_tasks: @employee.sub_tasks}
+
+= link_to 'Edit', edit_employee_path(@employee)
+\|
+= link_to 'Back', employees_path
